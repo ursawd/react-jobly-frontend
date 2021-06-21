@@ -1,0 +1,9 @@
+.LoginForm {
+  width: 25vw;
+  height: 40vh;
+  padding: 10px;
+  background-color: white;
+  margin: auto auto;
+  margin-top: 50px;
+  text-align: left;
+}
