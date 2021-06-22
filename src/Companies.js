@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
+import UserContext from "./UserContext";
+import { useHistory } from "react-router-dom";
 
 const Companies = () => {
   const [companies, setCompanies] = useState(null);
+  let history = useHistory();
+
+  console.log("context", useContext(UserContext));
+  if (!useContext(UserContext)) {
+    history.push("/home");
+  }
 
   useEffect(function getCompOneTime() {
     search();

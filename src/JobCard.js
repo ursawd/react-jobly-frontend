@@ -3,6 +3,7 @@ import "./JobCard.css";
 
 const JobCard = (props) => {
   const { title, salary, equity, companyName } = props.input;
+  const salaryComma = Number(salary).toLocaleString();
   return (
     <div className="JobCard">
       <div>
@@ -12,7 +13,7 @@ const JobCard = (props) => {
       <br></br>
       <div className="d-flex justify-content-between">
         <div>
-          <p className="mb-0">Salary: {salary}</p>
+          <p className="mb-0">Salary: ${salaryComma}</p>
           <p className="mb-0">Equity: {equity}</p>
         </div>
         <button className="btn btn-danger">APPLY</button>
