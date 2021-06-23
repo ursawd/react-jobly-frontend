@@ -1,20 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./LoginForm.css";
-const LoginForm = (props) => {
+//======================================================
+const LoginForm = ({ login }) => {
+  //----------------------------------------------------
+  const INIT_STATE = {
+    username: "",
+    password: "",
+  };
+  //----------------------------------------------------
+  const [formData, setFormData] = useState(INIT_STATE);
+  const history = useHistory();
+  //----------------------------------------------------
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData((formData) => ({ ...formData, [name]: value }));
+  };
+  //----------------------------------------------------
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    await login(formData);
+    setFormData(INIT_STATE);
+    history.push("/companies");
+  }
+  //----------------------------------------------------
+
   return (
     <div>
       <div className="LoginForm">
         <div>
           <h3>Login</h3>
-          <form className="font-weight-bold">
+          <form className="font-weight-bold" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label for="username">Username</label>
-              <input type="text" className="form-control" id="username" />
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" />
+              <label htmlFor="username">Username</label>
+
+              <input
+                id="username"
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                className="form-control"
+              />
+
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="form-control"
+                />
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </div>

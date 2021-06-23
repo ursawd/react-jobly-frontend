@@ -13,7 +13,7 @@ const Companies = () => {
     history.push("/home");
   }
 
-  useEffect(function getCompOneTime() {
+  useEffect(function getCompaniesOneTime() {
     search();
   }, []);
 
