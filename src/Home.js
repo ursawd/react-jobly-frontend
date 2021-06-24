@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div id="Home">
-      <div>
+      <div className="Home-card">
         <h1>Jobly</h1>
         <p>All the jobs in one, convienent place.</p>
 
@@ -19,10 +19,10 @@ const Home = () => {
         ) : (
           <div>
             <Link to="/login" className="btn btn-primary m-2">
-              Login
+              Log In
             </Link>
             <Link to="/signup" className="btn btn-primary m-2">
-              Signup
+              Sign Up
             </Link>
           </div>
         )}

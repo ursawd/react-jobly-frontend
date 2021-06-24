@@ -1,14 +1,24 @@
 .CompanyCard {
   margin: 2rem auto;
   background-color: white;
+  color: inherit;
   width: 60%;
   min-height: 150px;
   padding: 2rem;
   box-shadow: 5px 5px 5px darkgray;
+  display: flex;
+  flex-direction: column;
+}
+.CompanyCard a:hover {
+  text-decoration: none;
+}
+.CompanyCard a {
+  color: black;
 }
 .CompanyCard:hover {
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px #777777;
 }
+
 .CompanyCard-image {
   width: 75px;
 }

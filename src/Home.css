@@ -3,4 +3,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+.Home-card {
+  box-shadow: 5px 5px 5px lightgray;
+  padding: 10px;
+  background-color: #fff;
+}
+#Home a {
+  width: 100px;
 }
