@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 import "./Company.css";
 
 const Company = () => {
   const [company, setCompany] = useState(null);
+  const { handle } = useParams();
 
   useEffect(function getCompanyOneTime() {
-    search();
+    search(handle);
   }, []);
 
   async function search(name) {
