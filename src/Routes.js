@@ -10,7 +10,7 @@ import Signup from "./Signup";
 import NavBar from "./NavBar";
 import Logout from "./Logout";
 
-const Routes = ({ login, logout }) => {
+const Routes = ({ login, logout, signup }) => {
   return (
     <div>
       <NavBar />
@@ -28,7 +28,7 @@ const Routes = ({ login, logout }) => {
         </Route>
 
         <Route exact path="/signup">
-          <Signup />
+          <Signup signup={signup} />
         </Route>
 
         <Route exact path="/companies">

@@ -9,7 +9,6 @@ function App() {
   //---------------------------------------------
   async function login({ username, password }) {
     console.log("LOGIN", username, password);
-
     let data = {
       username: username,
       password: password,
@@ -25,12 +24,27 @@ function App() {
     JoblyApi.token = null;
   }
   //---------------------------------------------
+  async function signup({ username, password, firstName, lastName, email }) {
+    console.log("SIGNUP", username, password, firstName, lastName, email);
+    let data = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    };
+    const token = await JoblyApi.signup(data);
+    JoblyApi.token = token;
+    setCurrentUser(username);
+  }
+
+  //---------------------------------------------
   return (
     <>
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
           <div className="App">
-            <Routes login={login} logout={logout} />
+            <Routes login={login} logout={logout} signup={signup} />
           </div>
         </UserContext.Provider>
       </BrowserRouter>
