@@ -15,6 +15,7 @@ const Profile = () => {
   //-------------------------------------
   const currentUser = useContext(UserContext);
   const [formData, setFormData] = useState(INIT_FORM_STATE);
+  // const [profile, setProfile] = useState(null);
   const history = useHistory();
 
   //----------------------------------------------------
@@ -23,6 +24,23 @@ const Profile = () => {
     history.push("/home");
   }
   //----------------------------------------------------
+  useEffect(
+    function getProfileData() {
+      async function getProfile() {
+        let pD = await JoblyApi.getUserInfo(currentUser);
+        // setProfile(pD);
+        setFormData((formData) => ({
+          ...formData,
+          username: pD.username,
+          firstName: pD.firstName,
+          lastName: pD.lastName,
+          email: pD.email,
+        }));
+      }
+      getProfile();
+    },
+    [currentUser]
+  );
 
   //----------------------------------------------------
   // form processing of each field
