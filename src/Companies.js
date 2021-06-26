@@ -22,7 +22,7 @@ const Companies = () => {
     setCompanies(companies);
   }
 
-  if (!companies) return <h1 className="text-danger">Loading</h1>;
+  if (!companies) return <h1 className="text-center text-danger">Loading</h1>;
 
   return (
     <div>

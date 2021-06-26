@@ -12,3 +12,7 @@
 .NavBar-links a {
   margin: 0 10px;
 }
+.NavBar span {
+  background-color: #eeeeee;
+  border: 1px solid darkgray;
+}

@@ -19,7 +19,7 @@ function NavBar() {
       </NavLink>
       <NavLink to="/jobs">Jobs</NavLink>
       <NavLink to="/profile">Profile</NavLink>
-      <NavLink to="/logout">Log Out</NavLink>
+      <NavLink to="/logout">Log Out: {currentUser}</NavLink>
     </div>
   );
 

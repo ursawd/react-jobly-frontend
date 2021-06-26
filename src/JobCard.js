@@ -5,7 +5,7 @@ const JobCard = (props) => {
   const { title, salary, equity, companyName } = props.input;
   const salaryComma = Number(salary).toLocaleString();
   return (
-    <div className="JobCard">
+    <div key={companyName} className="JobCard">
       <div>
         <h5>{title}</h5>
       </div>

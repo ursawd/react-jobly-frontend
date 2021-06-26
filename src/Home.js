@@ -9,12 +9,12 @@ const Home = () => {
   return (
     <div id="Home">
       <div className="Home-card">
-        <h1>Jobly</h1>
+        <h1 className="display-1 font-weight-bolder text-primary">Jobly</h1>
         <p>All the jobs in one, convienent place.</p>
 
         {currentUser ? (
           <div>
-            <h1>Welcome Back</h1>
+            <h1>Welcome Back, {currentUser}</h1>
           </div>
         ) : (
           <div>

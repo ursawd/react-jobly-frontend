@@ -15,7 +15,7 @@ const Jobs = () => {
     setJobs(jobs);
   }
 
-  if (!jobs) return <h1>Loading</h1>;
+  if (!jobs) return <h1 className="text-center text-danger">Loading</h1>;
 
   return (
     <div>
