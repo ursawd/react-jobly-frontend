@@ -8,12 +8,11 @@ import LoginForm from "./LoginForm";
 import Profile from "./Profile";
 import Signup from "./Signup";
 import NavBar from "./NavBar";
-import Logout from "./Logout";
 
-const Routes = ({ login, signup, setCurrentUser, updateProfile }) => {
+const Routes = ({ login, signup, setCurrentUser, updateProfile, logout }) => {
   return (
     <div>
-      <NavBar />
+      <NavBar logout={logout} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -21,10 +20,6 @@ const Routes = ({ login, signup, setCurrentUser, updateProfile }) => {
 
         <Route exact path="/login">
           <LoginForm login={login} />
-        </Route>
-
-        <Route exact path="/logout">
-          <Logout setCurrentUser={setCurrentUser} />
         </Route>
 
         <Route exact path="/signup">

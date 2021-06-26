@@ -17,6 +17,11 @@ function App() {
     setCurrentUser(() => username);
   }
   //---------------------------------------------
+  function logout() {
+    setCurrentUser(null);
+    JoblyApi.token = null;
+  }
+  //---------------------------------------------
   async function signup({ username, password, firstName, lastName, email }) {
     let data = {
       username: username,
@@ -45,6 +50,7 @@ function App() {
               setCurrentUser={setCurrentUser}
               signup={signup}
               updateProfile={updateProfile}
+              logout={logout}
             />
           </div>
         </UserContext.Provider>

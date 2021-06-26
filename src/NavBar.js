@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import UserContext from "./UserContext";
 import "./NavBar.css";
-function NavBar() {
+function NavBar({ logout }) {
   const currentUser = useContext(UserContext);
   const jsxLogin = (
     <div className="NavBar-links">
@@ -19,7 +19,9 @@ function NavBar() {
       </NavLink>
       <NavLink to="/jobs">Jobs</NavLink>
       <NavLink to="/profile">Profile</NavLink>
-      <NavLink to="/logout">Log Out: {currentUser}</NavLink>
+      <NavLink to="/" onClick={logout} style={{ color: "#007BFF" }}>
+        Log Out: {currentUser}
+      </NavLink>
     </div>
   );
 
