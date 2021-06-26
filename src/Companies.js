@@ -8,7 +8,7 @@ const Companies = () => {
   const [companies, setCompanies] = useState(null);
   let history = useHistory();
 
-  console.log("context", useContext(UserContext));
+  //if false no user signed in, redirect to home
   if (!useContext(UserContext)) {
     history.push("/home");
   }
@@ -22,7 +22,7 @@ const Companies = () => {
     setCompanies(companies);
   }
 
-  if (!companies) return <h1>Loading</h1>;
+  if (!companies) return <h1 className="text-danger">Loading</h1>;
 
   return (
     <div>

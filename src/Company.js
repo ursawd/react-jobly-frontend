@@ -7,9 +7,12 @@ const Company = () => {
   const [company, setCompany] = useState(null);
   const { handle } = useParams();
 
-  useEffect(function getCompanyOneTime() {
-    search(handle);
-  }, []);
+  useEffect(
+    function getCompanyOneTime() {
+      search(handle);
+    },
+    [handle]
+  );
 
   async function search(name) {
     let company = await JoblyApi.getCompany(name);

@@ -16,11 +16,11 @@ function App() {
     const token = await JoblyApi.login(data);
     JoblyApi.token = token;
     console.log(token);
-    setCurrentUser(username);
+    setCurrentUser(() => username);
   }
   //---------------------------------------------
   function logout() {
-    setCurrentUser(null);
+    setCurrentUser(() => null);
     JoblyApi.token = null;
   }
   //---------------------------------------------
@@ -35,7 +35,7 @@ function App() {
     };
     const token = await JoblyApi.signup(data);
     JoblyApi.token = token;
-    setCurrentUser(username);
+    setCurrentUser(() => username);
   }
 
   //---------------------------------------------
