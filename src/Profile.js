@@ -4,7 +4,7 @@ import UserContext from "./UserContext";
 import "./SignupForm.css";
 import JoblyApi from "./api";
 
-const Profile = () => {
+const Profile = ({ updateProfile }) => {
   const INIT_FORM_STATE = {
     username: "",
     firstName: "",
@@ -15,7 +15,6 @@ const Profile = () => {
   //-------------------------------------
   const currentUser = useContext(UserContext);
   const [formData, setFormData] = useState(INIT_FORM_STATE);
-  // const [profile, setProfile] = useState(null);
   const history = useHistory();
 
   //----------------------------------------------------
@@ -27,14 +26,13 @@ const Profile = () => {
   useEffect(
     function getProfileData() {
       async function getProfile() {
-        let pD = await JoblyApi.getUserInfo(currentUser);
-        // setProfile(pD);
+        let oldProfile = await JoblyApi.getUserInfo(currentUser);
         setFormData((formData) => ({
           ...formData,
-          username: pD.username,
-          firstName: pD.firstName,
-          lastName: pD.lastName,
-          email: pD.email,
+          username: oldProfile.username,
+          firstName: oldProfile.firstName,
+          lastName: oldProfile.lastName,
+          email: oldProfile.email,
         }));
       }
       getProfile();
@@ -52,10 +50,7 @@ const Profile = () => {
   // processinig submission of form
   async function handleSubmit(evt) {
     evt.preventDefault();
-    //! due to copy form signup form
-    //! need processing function to be written
-    //! to update user in db
-    // await signup(formData);
+    await updateProfile(formData);
     setFormData(INIT_FORM_STATE);
     history.push("/companies");
   }

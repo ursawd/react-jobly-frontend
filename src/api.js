@@ -65,6 +65,15 @@ class JoblyApi {
     return res.user;
   }
   //....................................................
+  static async updateProfile(data) {
+    const username = data.username;
+    delete data.username;
+    delete data.password;
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
+
+  //....................................................
 } /* <===== End of component */
 //---------------------------------------
 export default JoblyApi;

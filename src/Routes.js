@@ -10,7 +10,7 @@ import Signup from "./Signup";
 import NavBar from "./NavBar";
 import Logout from "./Logout";
 
-const Routes = ({ login, signup, setCurrentUser }) => {
+const Routes = ({ login, signup, setCurrentUser, updateProfile }) => {
   return (
     <div>
       <NavBar />
@@ -44,7 +44,7 @@ const Routes = ({ login, signup, setCurrentUser }) => {
         </Route>
 
         <Route path="/profile">
-          <Profile />
+          <Profile updateProfile={updateProfile} />
         </Route>
 
         <Redirect to="/" />

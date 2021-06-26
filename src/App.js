@@ -8,14 +8,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   //---------------------------------------------
   async function login({ username, password }) {
-    console.log("LOGIN", username, password);
     let data = {
       username: username,
       password: password,
     };
     const token = await JoblyApi.login(data);
     JoblyApi.token = token;
-    console.log(token);
     setCurrentUser(() => username);
   }
   //---------------------------------------------
@@ -34,6 +32,10 @@ function App() {
   }
 
   //---------------------------------------------
+  async function updateProfile(data) {
+    const updated = await JoblyApi.updateProfile(data);
+  }
+  //---------------------------------------------
   return (
     <>
       <BrowserRouter>
@@ -43,6 +45,7 @@ function App() {
               login={login}
               setCurrentUser={setCurrentUser}
               signup={signup}
+              updateProfile={updateProfile}
             />
           </div>
         </UserContext.Provider>
