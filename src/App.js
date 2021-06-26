@@ -18,7 +18,6 @@ function App() {
   }
   //---------------------------------------------
   async function signup({ username, password, firstName, lastName, email }) {
-    console.log("SIGNUP", username, password, firstName, lastName, email);
     let data = {
       username: username,
       password: password,
@@ -33,7 +32,7 @@ function App() {
 
   //---------------------------------------------
   async function updateProfile(data) {
-    const updated = await JoblyApi.updateProfile(data);
+    await JoblyApi.updateProfile(data);
   }
   //---------------------------------------------
   return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Jobs.css";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
+import { v4 as uuid } from "uuid";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState(null);
@@ -20,7 +21,7 @@ const Jobs = () => {
   return (
     <div>
       {jobs.map((job) => (
-        <JobCard input={job} />
+        <JobCard key={uuid()} input={job} />
       ))}
     </div>
   );

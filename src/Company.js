@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 import "./Company.css";
+import { v4 as uuid } from "uuid";
 
 const Company = () => {
   const [company, setCompany] = useState(null);
@@ -16,7 +17,6 @@ const Company = () => {
 
   async function search(name) {
     let company = await JoblyApi.getCompany(name);
-    console.log("effect", company);
     setCompany(company);
   }
 
@@ -29,7 +29,10 @@ const Company = () => {
       <div>
         {company.jobs.map((job) => {
           return (
-            <div className="border-top d-flex justify-content-between">
+            <div
+              key={uuid()}
+              className="border-top d-flex justify-content-between"
+            >
               <div>
                 <h5>{job.title}</h5>
                 <p>Salary: ${Number(job.salary).toLocaleString()}</p>

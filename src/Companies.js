@@ -3,6 +3,7 @@ import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import UserContext from "./UserContext";
 import { useHistory } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 const Companies = () => {
   const [companies, setCompanies] = useState(null);
@@ -27,7 +28,7 @@ const Companies = () => {
   return (
     <div>
       {companies.map((company) => (
-        <CompanyCard input={company} />
+        <CompanyCard key={uuid()} input={company} />
       ))}
     </div>
   );

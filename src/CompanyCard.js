@@ -5,7 +5,7 @@ import "./CompanyCard.css";
 const CompanyCard = (props) => {
   const { handle, name, description, logoUrl } = props.input;
   return (
-    <div key={handle} className="CompanyCard">
+    <div className="CompanyCard">
       <Link to={`/companies/${handle}`}>
         <div>
           <div className="d-flex justify-content-between">
