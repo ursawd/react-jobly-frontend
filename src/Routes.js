@@ -10,7 +10,7 @@ import Signup from "./Signup";
 import NavBar from "./NavBar";
 import Logout from "./Logout";
 
-const Routes = ({ login, logout, signup }) => {
+const Routes = ({ login, signup, setCurrentUser }) => {
   return (
     <div>
       <NavBar />
@@ -24,7 +24,7 @@ const Routes = ({ login, logout, signup }) => {
         </Route>
 
         <Route exact path="/logout">
-          <Logout logout={logout} />
+          <Logout setCurrentUser={setCurrentUser} />
         </Route>
 
         <Route exact path="/signup">

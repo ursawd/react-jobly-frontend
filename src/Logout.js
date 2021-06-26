@@ -1,7 +1,11 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
-const Logout = ({ logout }) => {
-  logout();
-  return <Redirect to="/" />;
+import { useHistory } from "react-router-dom";
+import JoblyApi from "./api";
+const Logout = ({ setCurrentUser }) => {
+  let history = useHistory();
+  setCurrentUser(() => null);
+  JoblyApi.token = null;
+  history.push("/");
+  return null;
 };
+
 export default Logout;

@@ -19,11 +19,6 @@ function App() {
     setCurrentUser(() => username);
   }
   //---------------------------------------------
-  function logout() {
-    setCurrentUser(() => null);
-    JoblyApi.token = null;
-  }
-  //---------------------------------------------
   async function signup({ username, password, firstName, lastName, email }) {
     console.log("SIGNUP", username, password, firstName, lastName, email);
     let data = {
@@ -44,7 +39,11 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
           <div className="App">
-            <Routes login={login} logout={logout} signup={signup} />
+            <Routes
+              login={login}
+              setCurrentUser={setCurrentUser}
+              signup={signup}
+            />
           </div>
         </UserContext.Provider>
       </BrowserRouter>
