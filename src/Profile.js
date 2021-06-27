@@ -26,7 +26,7 @@ const Profile = ({ updateProfile }) => {
   useEffect(
     function getProfileData() {
       async function getProfile() {
-        let oldProfile = await JoblyApi.getUserInfo(currentUser);
+        let oldProfile = await JoblyApi.getUserInfo(currentUser.username);
         setFormData((formData) => ({
           ...formData,
           username: oldProfile.username,

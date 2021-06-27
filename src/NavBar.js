@@ -20,7 +20,7 @@ function NavBar({ logout }) {
       <NavLink to="/jobs">Jobs</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/" onClick={logout} style={{ color: "#007BFF" }}>
-        Log Out: {currentUser}
+        Log Out {currentUser ? currentUser.username : ""}
       </NavLink>
     </div>
   );

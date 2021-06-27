@@ -9,7 +9,7 @@ import Profile from "./Profile";
 import Signup from "./Signup";
 import NavBar from "./NavBar";
 
-const Routes = ({ login, signup, setCurrentUser, updateProfile, logout }) => {
+const Routes = ({ login, signup, updateProfile, logout }) => {
   return (
     <div>
       <NavBar logout={logout} />

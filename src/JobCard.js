@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./JobCard.css";
-
+import UserContext from "./UserContext";
 const JobCard = (props) => {
-  const { title, salary, equity, companyName } = props.input;
+  const { id, title, salary, equity, companyName } = props.input;
   const salaryComma = Number(salary).toLocaleString();
+  const currentUser = useContext(UserContext);
   return (
     <div className="JobCard">
       <div>
@@ -16,7 +17,9 @@ const JobCard = (props) => {
           <p className="mb-0">Salary: ${salaryComma}</p>
           <p className="mb-0">Equity: {equity}</p>
         </div>
-        <button className="btn btn-danger">APPLY</button>
+        <button className="btn btn-danger">
+          {currentUser.applications.includes(id) ? "Applied" : "Apply"}
+        </button>
       </div>
     </div>
   );

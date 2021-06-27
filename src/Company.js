@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import UserContext from "./UserContext";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 import "./Company.css";
@@ -7,6 +8,7 @@ import { v4 as uuid } from "uuid";
 const Company = () => {
   const [company, setCompany] = useState(null);
   const { handle } = useParams();
+  const currentUser = useContext(UserContext);
 
   useEffect(
     function getCompanyOneTime() {
@@ -21,7 +23,8 @@ const Company = () => {
   }
 
   if (!company) return <h1 className="text-center text-danger">Loading</h1>;
-
+  console.log("COMPANY", company);
+  console.log("currentUser", currentUser);
   return (
     <div className="Company">
       <h3>{company.name}</h3>
@@ -39,7 +42,12 @@ const Company = () => {
                 <p>Equity: {job.equity}</p>
               </div>
               <div>
-                <button className="btn btn-danger">APPLY</button>
+                {/* //! check job.id against user.applications array */}
+                <button className="btn btn-danger">
+                  {currentUser.applications.includes(job.id)
+                    ? "Applied"
+                    : "Apply"}
+                </button>
               </div>
             </div>
           );

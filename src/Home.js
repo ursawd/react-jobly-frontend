@@ -5,7 +5,7 @@ import "./Home.css";
 
 const Home = () => {
   const currentUser = useContext(UserContext);
-
+  console.log(currentUser);
   return (
     <div id="Home">
       <div className="Home-card">
@@ -14,7 +14,7 @@ const Home = () => {
 
         {currentUser ? (
           <div>
-            <h1>Welcome Back, {currentUser}</h1>
+            <h1>Welcome Back, {currentUser.username}</h1>
           </div>
         ) : (
           <div>
