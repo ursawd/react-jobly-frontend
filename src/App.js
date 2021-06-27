@@ -14,12 +14,8 @@ function App() {
     };
     const token = await JoblyApi.login(data);
     JoblyApi.token = token;
-    //! get all data for just verified user
     const user = await JoblyApi.getUserInfo(username);
-    console.log("user---", user);
-    //!
     setCurrentUser((currentUser) => user);
-    console.log("currentUser---", currentUser);
   }
   //---------------------------------------------
   function logout() {
