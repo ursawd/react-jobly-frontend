@@ -15,6 +15,7 @@ const Profile = ({ updateProfile }) => {
   //-------------------------------------
   const currentUser = useContext(UserContext);
   const [formData, setFormData] = useState(INIT_FORM_STATE);
+  const [error, setError] = useState(null);
   const history = useHistory();
 
   //----------------------------------------------------
@@ -50,9 +51,13 @@ const Profile = ({ updateProfile }) => {
   // processinig submission of form
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await updateProfile(formData);
-    setFormData(INIT_FORM_STATE);
-    history.push("/companies");
+    try {
+      await updateProfile(formData);
+      setFormData(INIT_FORM_STATE);
+      history.push("/companies");
+    } catch (err) {
+      setError(err);
+    }
   }
 
   return (
@@ -114,6 +119,15 @@ const Profile = ({ updateProfile }) => {
               className="form-control"
             />
           </div>
+
+          {error && (
+            <div className="form-group ">
+              <input
+                className="form-control alert alert-danger"
+                value={error}
+              />
+            </div>
+          )}
 
           <button type="submit" className="btn btn-primary">
             Save Changes

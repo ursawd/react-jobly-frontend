@@ -10,6 +10,7 @@ const LoginForm = ({ login }) => {
   };
   //----------------------------------------------------
   const [formData, setFormData] = useState(INIT_STATE);
+  const [error, setError] = useState(null);
   const history = useHistory();
   //----------------------------------------------------
   const handleChange = (evt) => {
@@ -19,9 +20,13 @@ const LoginForm = ({ login }) => {
   //----------------------------------------------------
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await login(formData);
-    setFormData(INIT_STATE);
-    history.push("/companies");
+    try {
+      await login(formData);
+      setFormData(INIT_STATE);
+      history.push("/companies");
+    } catch (err) {
+      setError(err);
+    }
   }
   //----------------------------------------------------
 
@@ -55,6 +60,15 @@ const LoginForm = ({ login }) => {
                   className="form-control"
                 />
               </div>
+              {error && (
+                <div className="form-group ">
+                  <input
+                    className="form-control alert alert-danger"
+                    value={error}
+                  />
+                </div>
+              )}
+
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>

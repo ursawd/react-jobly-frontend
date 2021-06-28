@@ -9,6 +9,16 @@ const Company = () => {
   const [company, setCompany] = useState(null);
   const { handle } = useParams();
   const currentUser = useContext(UserContext);
+  const [updatedJobs, setUpdatedJob] = useState(currentUser.applications);
+
+  const applyFor = async (id) => {
+    const data = {
+      username: currentUser.username,
+      jobId: id,
+    };
+    const status = await JoblyApi.applyForJob(data);
+    setUpdatedJob((updatedJobs) => [...updatedJobs, status.applied]);
+  };
 
   useEffect(
     function getCompanyOneTime() {
@@ -42,11 +52,11 @@ const Company = () => {
                 <p>Equity: {job.equity}</p>
               </div>
               <div>
-                {/* //! check job.id against user.applications array */}
-                <button className="btn btn-danger">
-                  {currentUser.applications.includes(job.id)
-                    ? "Applied"
-                    : "Apply"}
+                <button
+                  onClick={() => applyFor(job.id)}
+                  className="btn btn-danger"
+                >
+                  {updatedJobs.includes(job.id) ? "Applied" : "Apply"}
                 </button>
               </div>
             </div>
