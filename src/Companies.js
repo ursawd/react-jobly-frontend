@@ -4,6 +4,7 @@ import CompanyCard from "./CompanyCard";
 import UserContext from "./UserContext";
 import { useHistory } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import SearchForm from "./SearchForm";
 
 const Companies = () => {
   const [companies, setCompanies] = useState(null);
@@ -27,9 +28,12 @@ const Companies = () => {
 
   return (
     <div>
-      {companies.map((company) => (
-        <CompanyCard key={uuid()} input={company} />
-      ))}
+      <SearchForm />
+      <div>
+        {companies.map((company) => (
+          <CompanyCard key={uuid()} input={company} />
+        ))}
+      </div>
     </div>
   );
 };

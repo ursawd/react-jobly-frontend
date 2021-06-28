@@ -3,6 +3,7 @@ import "./Jobs.css";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 import { v4 as uuid } from "uuid";
+import SearchForm from "./SearchForm";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState(null);

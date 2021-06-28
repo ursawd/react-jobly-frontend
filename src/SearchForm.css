@@ -1,0 +1,15 @@
+.SearchForm input:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+.SearchForm {
+  margin: 2rem auto;
+  background-color: white;
+  color: inherit;
+  width: 60%;
+  min-height: 100px;
+  padding: 2rem;
+  box-shadow: 5px 5px 5px darkgray;
+  display: flex;
+  flex-direction: column;
+}
