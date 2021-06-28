@@ -16,6 +16,7 @@ const Profile = ({ updateProfile }) => {
   const currentUser = useContext(UserContext);
   const [formData, setFormData] = useState(INIT_FORM_STATE);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
   const history = useHistory();
 
   //----------------------------------------------------
@@ -53,8 +54,9 @@ const Profile = ({ updateProfile }) => {
     evt.preventDefault();
     try {
       await updateProfile(formData);
-      setFormData(INIT_FORM_STATE);
-      history.push("/companies");
+      // setFormData(INIT_FORM_STATE);
+      // history.push("/companies");
+      setSuccess(true);
     } catch (err) {
       setError(err);
     }
@@ -125,6 +127,14 @@ const Profile = ({ updateProfile }) => {
               <input
                 className="form-control alert alert-danger"
                 value={error}
+              />
+            </div>
+          )}
+          {success && (
+            <div className="form-group ">
+              <input
+                className="form-control alert alert-success"
+                value="Success"
               />
             </div>
           )}
