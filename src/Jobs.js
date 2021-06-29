@@ -21,7 +21,7 @@ const Jobs = () => {
 
   return (
     <div style={{ width: "45%", margin: "0 auto" }}>
-      <SearchForm />
+      <SearchForm searchFor={search} />
       {jobs.map((job) => (
         <JobCard key={uuid()} input={job} />
       ))}
