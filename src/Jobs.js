@@ -20,7 +20,8 @@ const Jobs = () => {
   if (!jobs) return <h1 className="text-center text-danger">Loading</h1>;
 
   return (
-    <div>
+    <div style={{ width: "45%", margin: "0 auto" }}>
+      <SearchForm />
       {jobs.map((job) => (
         <JobCard key={uuid()} input={job} />
       ))}

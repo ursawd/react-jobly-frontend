@@ -27,7 +27,7 @@ const Companies = () => {
   if (!companies) return <h1 className="text-center text-danger">Loading</h1>;
 
   return (
-    <div>
+    <div style={{ width: "60%", margin: "0 auto" }}>
       <SearchForm />
       <div>
         {companies.map((company) => (
