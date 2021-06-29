@@ -28,7 +28,7 @@ const Companies = () => {
 
   return (
     <div style={{ width: "60%", margin: "0 auto" }}>
-      <SearchForm />
+      <SearchForm searchFor={search} />
       <div>
         {companies.map((company) => (
           <CompanyCard key={uuid()} input={company} />
